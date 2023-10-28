@@ -78,9 +78,9 @@ nav li a:hover {
 .imdb {
     font-size: 12px;
     font-weight: bold;
-    color: black;
+    color: #FFFFFF;
     text-decoration: none;
-    background: #F5C518;
+    background: #007711;
     border-radius: 5px;
     padding: 3px 5px;
 }
@@ -115,6 +115,7 @@ input[name=year] {
     color: white;
     border: 1px solid black;
 }
+
 .alert {
     position: relative;
     padding: 7px;

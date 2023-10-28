@@ -2,6 +2,8 @@
 
 **目标**:开发一个简单的Watchlist程序
 
+[toc]
+
 ## 准备工作
 
 ### 使用git
@@ -94,5 +96,69 @@ html中无需导入url_for,存在上下文环境
 
 增加对应的class属性关联
 
+## 数据库
+
+### 使用SQLALCHEMY操作数据库
+
+基于文件,无需单独启动数据库服务器,适合操作简单,访问量低的程序
+
+设置URI
+
+`app.config['SQLALCHEMY_DATABASE_URI']='sqlite:////...'`
+
+### 创建数据库模型
+
+```python
+class User(db.model):
+    pass
+```
+
+`db.creatall()`
+
+`db.dropall()`
+
+### 增删改查
+
+`db.session.add()`
+
+`db.session.commit()`
+
+<模型类>.query.<过滤方法(optional)>.<查询方法>
+
+过滤方法:
+
+1. `filter()`
+
+2. `filter_by()`
+
+3. `order_by()`
+
+4. `group_by()`
+
+查询方法
+
+1. `all()`
+2. `first()`
+3. `get(id)`
+4. `count()`
+5. ...
 
 
+
+`db.session.delete()`
+
+## 模板优化
+
+### 定义错误页面
+
+`@app.errorhandler(404)`
+
+### 模板上下文处理函数
+
+`@app.context_processor`
+
+### 使用模板继承组织模板
+
+`base.html`
+
+{extend 'base.html'}

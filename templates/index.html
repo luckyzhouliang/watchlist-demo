@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>{{name}}'s Watchlist</title>
-    <link rel="icon" href="{{ url_for('static',filename='images/favicon.ico') }}">
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css">
-</head>
-<body>
-<h2>
-    <img alt="avatar" class="avatar" src="{{ url_for('static',filename='images/avatar.png') }}">
-    {{name}}'s Watchlist
-</h2>
-{#使用length获取长度#}
+{% extends 'base.html' %}
+{%block content%}
+
 <p>
     {{movies|length}} Titles
 </p>
 <ul class="movie-list">
     {% for movie in movies %}
-    <li>{{movie.title}}-{{movie.year}}</li>
+    <li>
+        {{movie.title}}-{{movie.year}}
+    <span class="float-right">
+        <a class="imdb" href="https://search.douban.com/movie/subject_search?search_text={{movie.title}}" target="_blank" title="find this movie on 豆瓣 ">豆瓣</a>
+    </span>
+    </li>
     {% endfor %}
 </ul>
 <img alt="walking totoro" class="totoro" src="{{url_for('static',filename='images/totoro.gif')}}">
-<footer>
-    <small>&copy;2023</small>
-</footer>
-</body>
-</html>
+{% endblock%}
